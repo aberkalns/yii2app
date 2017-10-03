@@ -51,6 +51,13 @@ class SiteController extends Controller
                 'class' => 'yii\captcha\CaptchaAction',
                 'fixedVerifyCode' => YII_ENV_TEST ? 'testme' : null,
             ],
+            'pages' => [
+                'class' => 'yii\web\ViewAction',
+            ],
+            'static' => [
+                'class' => 'yii\web\ViewAction',
+                'viewPrefix' => 'static',
+            ],
         ];
     }
 
