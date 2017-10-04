@@ -51,6 +51,14 @@ $config = [
               'route' => 'news/items-list',
               'defaults' => ['category' => 'shopping']
              ],
+             [
+            'pattern' => '<lang:\w+>/<controller>/<action>',
+            'route' => '<controller>/<action>',
+            ],
+            [
+            'class' => 'app\components\NewsUrlRule',
+            // ...configure other properties...
+            ],
             ],
         ],
         
