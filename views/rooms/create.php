@@ -17,11 +17,14 @@ use yii\helpers\ArrayHelper;
     Has phone: <?php echo Yii::$app->formatter->asBoolean($model->has_phone); ?> <br />
     Available from (mm/dd/yyyy): <?php echo Yii::$app->formatter->asDate($model->available_from,'php:m/d/Y'); ?> <br />
     Price per day: <?php echo Yii::$app->formatter->asCurrency($model->price_per_day,'EUR'); ?> <br />
-    
+    Image:
+    <?php if(isset($model->fileImage)) { ?>
+        <img src="<?php echo Url::to('@uploadedfilesdir/'.$model->fileImage->name) ?>" />
+    <?php } ?>
 </div>
 <?php } ?>
 
-<?php $form = ActiveForm::begin(); ?>
+<?php $form = ActiveForm::begin(['options' => ['enctype' => 'multipart/form-data']]); ?>  
 <div class="row">
     <div class="col-lg-12">
         <h1>Room form</h1>
@@ -33,6 +36,9 @@ use yii\helpers\ArrayHelper;
         <?= $form->field($model, 'available_from')->textInput() ?>
         <?= $form->field($model, 'price_per_day')->textInput() ?>
         <?= $form->field($model, 'description')->textarea() ?>
+        
+        
+        <?= $form->field($model, 'fileImage')->fileInput() ?>
    </div>
 </div>
 <div class="form-group">
